@@ -1,12 +1,12 @@
 # path to the tpcds-kit directory
 export TPCDS_ROOT=$HOME/tpcds-kit
 
-# top level directory for flat files in HDFS
-export FLATFILE_HDFS_ROOT=/user/${USER}/tpcds
-
 # scale factor in GB
 # SF 3000 yields ~1TB for the store_sales table
 export TPCDS_SCALE_FACTOR=3000
+
+# top level directory for flat files in HDFS
+export FLATFILE_HDFS_ROOT=/user/${USER}/tpcds-sf${TPCDS_SCALE_FACTOR}
 
 # this is used to determine the number of dsdgen processes to generate data
 # usually set to one per physical CPU core
