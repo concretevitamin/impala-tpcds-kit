@@ -1,7 +1,7 @@
 #!/bin/bash
 source tpcds-env.sh
 
-for t in date_dim time_dim customer customer_address customer_demographics household_demographics item promotion store
+for t in $DIMS
 do
   echo "Generating table $t"
   ${TPCDS_ROOT}/tools/dsdgen \
@@ -14,4 +14,4 @@ do
 done
 wait
 
-hdfs dfs -ls -R ${FLATFILE_HDFS_ROOT}/*/*.dat
+hdfs dfs -ls ${FLATFILE_HDFS_ROOT}/*/*.dat
