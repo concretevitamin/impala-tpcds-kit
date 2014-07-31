@@ -8,14 +8,12 @@ count=$DSDGEN_THREADS_PER_NODE
 
 start=(NODENUM-1)*$count+1
 
-# hard coded for the store_sales table for now
-# t=store_sales
-
+# FIXME: note that _returns fact tables will not get generated.
 for t in $FACTS
 do
   for (( c=$start; c<($count+$start); c++ ))
   do
-    echo "Generating part $c of ${DSDGEN_TOTAL_THREADS}"
+    echo "Generating part $c of ${DSDGEN_TOTAL_THREADS}, table $t"
     ${TPCDS_ROOT}/tools/dsdgen \
       -TABLE $t \
       -SCALE ${TPCDS_SCALE_FACTOR} \
